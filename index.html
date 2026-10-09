@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>صوت الجبال | المغرب العميق</title>
+<style>
+:root{--dark:#102b3a;--blue:#176b78;--gold:#e8bd68;--cream:#f5f4ee;--green:#34694d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:#263943;font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+button,input,textarea,select{font:inherit}
+button,a{cursor:pointer}
+button{border:0}
+header{background:var(--dark);color:white;position:sticky;top:0;z-index:20;box-shadow:0 3px 12px #0002}
+.nav{max-width:1100px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:bold;font-size:23px;color:var(--gold)}
+.brand small{display:block;color:white;font-size:11px;font-weight:normal}
+.menu{background:transparent;color:white;border:1px solid #ffffff55;padding:7px 12px;border-radius:7px}
+.links{display:flex;gap:13px;flex-wrap:wrap}
+.links button{background:transparent;color:white;padding:7px;font-size:13px}
+.links button:hover{color:var(--gold)}
+.hero{min-height:480px;color:white;display:flex;align-items:center;background:linear-gradient(90deg,#081e2acc,#081e2a75),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85') center/cover}
+.hero-inner{max-width:1100px;width:100%;margin:auto;padding:55px 20px}
+.hero .tag{color:var(--gold);font-weight:bold}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.35;margin:12px 0}
+.hero p{max-width:670px;font-size:17px;color:#e7eff1}
+.btn{display:inline-block;padding:11px 17px;border-radius:8px;background:var(--gold);color:var(--dark);font-weight:bold;margin:5px}
+.btn.secondary{background:transparent;color:white;border:1px solid #ffffff88}
+section{padding:55px 0}
+.container{width:min(1060px,92%);margin:auto}
+.heading{margin-bottom:24px}
+.heading small{color:var(--green);font-weight:bold}
+.heading h2{margin:4px 0;font-size:clamp(25px,4vw,35px)}
+.heading p{margin:0;color:#61727a}
+.welcome{position:fixed;bottom:-150px;left:50%;transform:translateX(-50%);width:min(520px,90%);background:var(--dark);color:white;padding:17px 20px;border-radius:14px 14px 0 0;z-index:50;text-align:center;box-shadow:0 0 30px #0003;animation:welcome 1s 1s forwards}
+.welcome b{color:var(--gold);font-size:20px}
+@keyframes welcome{to{bottom:0}}
+.welcome button{float:left;background:#ffffff20;color:white;border-radius:5px;padding:2px 9px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.tile{background:white;border:1px solid #e0e6e4;border-radius:13px;padding:22px;text-align:right;display:block;width:100%;color:inherit;transition:.2s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 8px 20px #102b3a13}
+.tile .emoji{font-size:30px}
+.tile h3{margin:6px 0;font-size:19px}
+.tile p{margin:0;color:#697981;font-size:14px}
+.subpage{display:none}
+.subpage.active{display:block}
+.back{background:#e4ece8;color:var(--dark);border-radius:7px;padding:8px 13px;margin-bottom:18px}
+.article-list{display:grid;gap:10px}
+.article-title{width:100%;background:white;border:1px solid #dce5e1;border-radius:9px;padding:15px;text-align:right;color:var(--dark);font-weight:bold}
+.article-title:hover{background:#edf5ef}
+.article{display:none;background:white;padding:22px;border-radius:12px;border:1px solid #e0e6e4;margin-top:12px}
+.article.active{display:block}
+.article h3{margin-top:0;font-size:25px}
+.article p{white-space:pre-line}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.photo-grid img{width:100%;height:240px;object-fit:cover;border-radius:12px}
+.note{background:#fff3d6;border:1px solid #ead59b;padding:12px;border-radius:8px;font-size:13px;margin:15px 0}
+.form-card{background:white;border:1px solid #dfe7e3;border-radius:13px;padding:22px;margin-bottom:15px}
+label{display:block;font-weight:bold;margin:12px 0 5px}
+input,textarea,select{width:100%;padding:11px;border:1px solid #cbd8d7;border-radius:7px;background:white}
+textarea{min-height:150px;resize:vertical}
+.check{display:flex;align-items:flex-start;gap:8px;font-size:14px}
+.check input{width:auto;margin-top:8px}
+.result{display:none;margin-top:15px;padding:15px;background:#edf6ee;border-radius:8px}
+.result textarea{margin-top:10px}
+.poll-option{display:block;background:#f0f4f0;padding:10px;border-radius:7px;margin:8px 0}
+.poll-option input{width:auto}
+footer{background:#0a202d;color:white;padding:30px 0;text-align:center}
+footer p{color:#c5d5db;font-size:13px}
+@media(max-width:760px){
+ .nav{flex-wrap:wrap}.menu{display:block}.links{display:none;width:100%;flex-direction:column;gap:2px}.links.open{display:flex}.links button{text-align:right;padding:10px}
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero{min-height:450px}.photo-grid img{height:180px}
+}
+@media(max-width:480px){.cards{grid-template-columns:1fr}.photo-grid{grid-template-columns:1fr}.photo-grid img{height:230px}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="nav">
+  <div class="brand">⛰ صوت الجبال <small>من الجبال نروي حكاية الإنسان</small></div>
+  <button class="menu" id="menuButton">☰ القائمة</button>
+  <nav class="links" id="navLinks">
+   <button onclick="showPage('home')">الرئيسية</button>
+   <button onclick="showPage('aitbilal')">آيت بلال</button>
+   <button onclick="showPage('articles')">المقالات والأفكار</button>
+   <button onclick="showPage('problems')">المشاكل والحلول</button>
+   <button onclick="showPage('questions')">أسئلة الشباب</button>
+   <button onclick="showPage('activities')">الندوات واللقاءات</button>
+   <button onclick="showPage('contribute')">شارك بمقال</button>
+  </nav>
+ </div>
+</header>
+
+<div class="welcome" id="welcome">
+ <button onclick="document.getElementById('welcome').remove()">×</button>
+ <b>مرحبًا بك في المغرب العميق</b><br>
+ هنا حكايات الجبل، وأصوات أهله، وأفكار الشباب من أجل مستقبل أفضل.
+</div>
+
+<main>
+<section class="hero" id="hero">
+ <div class="hero-inner">
+  <div class="tag">منصة ثقافية ومجتمعية</div>
+  <h1>صوت الجبال<br>صوت الإنسان والمكان</h1>
+  <p>لسنا هنا لنكتفي بوصف جمال الجبال، بل لنستمع إلى سكانها، ونوثق ذاكرتهم، ونناقش التحديات التي تواجههم، ونفتح المجال أمام الشباب لاقتراح الحلول وتنظيم لقاءات هادفة.</p>
+  <button class="btn" onclick="showPage('aitbilal')">اكتشف آيت بلال</button>
+  <button class="btn secondary" onclick="showPage('activities')">كن جزءًا من المبادرة</button>
+ </div>
+</section>
+
+<section id="home" class="page active">
+ <div class="container">
+  <div class="heading">
+   <small>اختر ما تريد اكتشافه</small>
+   <h2>مرحبًا بك في صوت الجبال</h2>
+   <p>اضغط على إحدى الخانات التالية، وستظهر لك موضوعاتها ومحتوياتها.</p>
+  </div>
+  <div class="cards">
+   <button class="tile" onclick="showPage('aitbilal')"><div class="emoji">🏔️</div><h3>التعرّف على آيت بلال</h3><p>المنطقة، الحياة اليومية، الذاكرة، والثقافة المحلية.</p></button>
+   <button class="tile" onclick="showPage('articles')"><div class="emoji">📚</div><h3>المقالات والأفكار</h3><p>اختر عنوانًا واقرأ المقال كاملًا.</p></button>
+   <button class="tile" onclick="showPage('problems')"><div class="emoji">🔎</div><h3>المشاكل والحلول</h3><p>نناقش التحديات ونقترح خطوات عملية قابلة للمتابعة.</p></button>
+   <button class="tile" onclick="showPage('questions')"><div class="emoji">💬</div><h3>أسئلة الشباب</h3><p>عبّر عن رأيك، وحدد الأولويات التي تهم منطقتك.</p></button>
+   <button class="tile" onclick="showPage('activities')"><div class="emoji">🤝</div><h3>الندوات واللقاءات</h3><p>شاركنا رغبتك في لقاءات توعوية وأنشطة مستقبلية.</p></button>
+   <button class="tile" onclick="showPage('contribute')"><div class="emoji">✍️</div><h3>شارك بمقال</h3><p>اكتب عنوان مقالك ومضمونه وساهم في إثراء المنصة.</p></button>
+   <button class="tile" onclick="showPage('gallery')"><div class="emoji">📷</div><h3>صور من الجبل</h3><p>صور توثق الحياة والثلوج والمسالك والمناظر المحلية.</p></button>
+   <button class="tile" onclick="showPage('about')"><div class="emoji">🌱</div><h3>عن صوت الجبال</h3><p>رسالة المنصة ومبادئها وأهدافها.</p></button>
+  </div>
+ </div>
+</section>
+
+<section id="aitbilal" class="subpage">
+ <div class="container">
+  <button class="back" onclick="showPage('home')">← العودة إلى الأقسام</button>
+  <div class="heading"><small>المكان والإنسان</small><h2>آيت بلال: أرض وحكاية</h2>
+  <p>مساحة للتعريف بالمنطقة وسكانها، وحفظ ذاكرتها، وتوثيق القضايا التي يطرحها أهلها بأنفسهم.</p></div>
+  <div class="photo-grid">
+   <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="جبال">
+   <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="طبيعة جبلية">
+  </div>
+  <div class="article">
+   <h3>ماذا نريد أن نوثّق عن آيت بلال؟</h3>
+   <p>نريد أن تكون هذه المساحة مرجعًا محليًا يجمع الحكايات والصور والذاكرة الثقافية، ويتيح لسكان المنطقة التعبير عن أولوياتهم.
+
+من الموضوعات التي يمكن توثيقها: حالة الطرق والمسالك، ظروف التنقل إلى المدارس، الوصول إلى الخدمات الصحية، الماء، فرص الشباب، الهجرة، اللغة الأمازيغية، العادات والتقاليد، والتعاون بين سكان الدواوير.
+
+لا ينبغي أن ننسب مشكلة إلى دوار محدد دون معلومات موثوقة. نريد شهادات بموافقة أصحابها، وتواريخ وأماكن واضحة، وصورًا أصلية متى توفرت.</p>
+  </div>
+  <div class="form-card">
+   <h3>ما الذي تريد أن نعرّف به عن منطقتك؟</h3>
+   <label for="localTopic">اختر الموضوع</label>
+   <select id="localTopic"><option>الطرق والمسالك</option><option>التعليم والنقل المدرسي</option><option>الصحة والخدمات</option><option>التراث والثقافة الأمازيغية</option><option>الشباب وفرص العمل</option><option>الطبيعة والبيئة</option><option>موضوع آخر</option></select>
+   <label for="localIdea">اكتب فكرة أو معلومة تريد توثيقها</label>
+   <textarea id="localIdea" placeholder="اكتب اسم المكان والتفاصيل التي تعرفها..."></textarea>
+   <button class="btn" onclick="prepareText('localResult','مساهمة حول آيت بلال','localTopic','localIdea')">جهّز مساهمتي</button>
+   <div class="result" id="localResult"></div>
+  </div>
+ </div>
+</section>
+
+<section id="articles" class="subpage">
+ <div class="container">
+  <button class="back" onclick="showPage('home')">← العودة إلى الأقسام</button>
+  <div class="heading"><small>اقرأ وناقش</small><h2>المقالات والأفكار</h2><p>اضغط على عنوان المقال لفتح النص الكامل.</p></div>
+  <div class="article-list">
+   <button class="article-title" onclick="openArticle('a1')">1. الجبل ليس منظرًا طبيعيًا فقط، بل حياة كاملة</button>
+   <div class="article" id="a1"><h3>الجبل ليس منظرًا طبيعيًا فقط، بل حياة كاملة</h3>
+   <p>حين ننظر إلى الجبال، قد نرى القمم والثلوج والغابات والطرق المتعرجة. لكن خلف هذه الصور توجد حياة كاملة، فيها أسر وتلاميذ وشباب ونساء ورجال، وفيها أحلام يومية وأسئلة عن المستقبل.
+
+ليس من العدل أن نختزل الجبل في جماله الطبيعي، كما ليس من العدل أن نختزله في معاناته وحدها. فهناك ثقافة ومعرفة محلية وروابط اجتماعية وذاكرة متوارثة، وهناك أيضًا قضايا تحتاج إلى الاستماع والتوثيق والنقاش.
+
+إن أول خطوة نحو فهم أي منطقة هي أن نصغي إلى سكانها، لا أن نتحدث بدلًا منهم. نسألهم عن أولوياتهم، ونوثق ما يقولونه بموافقتهم، ونفرق بين الوقائع والآراء، ثم نبحث عن طرق مسؤولة لإيصال مطالبهم.
+
+صوت الجبال مساحة للحكاية والمعرفة والحوار، وليس بديلًا عن المؤسسات أو عن العمل الميداني. قيمته أن يساعد على تنظيم الأفكار، وتشجيع المبادرات، وحفظ ذاكرة المكان.</p></div>
+
+   <button class="article-title" onclick="openArticle('a2')">2. عندما يصبح الطريق جزءًا من معاناة التلميذ</button>
+   <div class="article" id="a2"><h3>عندما يصبح الطريق جزءًا من معاناة التلميذ</h3>
+   <p>التعليم حق، والوصول الآمن إلى المدرسة عنصر مهم في الاستفادة منه. وفي المناطق الجبلية قد تطرح المسافة وحالة المسالك والطقس والنقل أسئلة تستحق الدراسة من خلال شهادات الأسر والتلاميذ والمعلمين.
+
+لا يكفي نشر صورة لطريق صعب ثم نسيان الموضوع. التوثيق الجاد يحدد مكان الطريق، وتاريخ الصورة، وطبيعة الصعوبة، وعدد المستفيدين المتأثرين إن أمكن التحقق منه، والجهة المعنية بالصيانة أو النقل.
+
+بعد جمع المعطيات، يمكن إعداد مطلب واضح ومهذب، وتقديمه إلى الجهة المختصة، ومتابعة الرد والنتيجة. الهدف ليس صناعة الضجيج، بل تحويل المشكلة الموثقة إلى سؤال محدد وخطوة عملية.
+
+ينبغي كذلك حماية الأطفال وعدم نشر وجوههم أو معلوماتهم الشخصية دون موافقة مناسبة.</p></div>
+
+   <button class="article-title" onclick="openArticle('a3')">3. الهجرة القروية: ماذا يحدث حين يرحل الشباب؟</button>
+   <div class="article" id="a3"><h3>الهجرة القروية: ماذا يحدث حين يرحل الشباب؟</h3>
+   <p>قد ينتقل الشاب من قريته إلى المدينة بحثًا عن الدراسة أو العمل أو خدمات غير متاحة بالقرب منه. وقد تمنحه المدينة فرصًا جديدة، لكنها قد تضعه أيضًا أمام تكاليف السكن والتنقل والابتعاد عن أسرته.
+
+لا ينبغي التعامل مع الهجرة باعتبارها قرارًا واحدًا له سبب واحد؛ فالتجارب تختلف، وأسبابها تحتاج إلى الاستماع إلى الناس ودراسة المعطيات المحلية.
+
+ومن الأسئلة التي تستحق النقاش: كيف يمكن دعم التكوين وفرص العمل؟ هل توجد إمكانات لتطوير المنتجات المحلية والتعاونيات؟ كيف يمكن تحسين الاتصال الرقمي والخدمات؟ وما المبادرات التي يقترحها الشباب أنفسهم؟
+
+الهدف ليس إجبار الناس على البقاء في القرى، بل توسيع اختياراتهم حتى تكون الهجرة قرارًا حرًا، لا نتيجة لانعدام البدائل.</p></div>
+
+   <button class="article-title" onclick="openArticle('a4')">4. التراث الأمازيغي ذاكرة تستحق الحفظ</button>
+   <div class="article" id="a4"><h3>التراث الأمازيغي ذاكرة تستحق الحفظ</h3>
+   <p>تحمل اللغة والأمثال والحكايات والأغاني وأسماء الأماكن معارف وتجارب تراكمت عبر الأجيال. وقد تضيع بعض هذه الذاكرة إذا لم تُسجل وتُنقل إلى الشباب.
+
+يمكن لأي مبادرة محلية أن تبدأ بخطوات بسيطة: تسجيل حكاية بموافقة راويها، وكتابة الكلمات الأمازيغية كما ينطقها أصحابها، وتفسيرها، وتحديد المنطقة التي تستعمل فيها، وحفظ التسجيلات بطريقة منظمة.
+
+ينبغي احترام أصحاب هذه المعارف وحقوقهم، وعدم نشر تسجيل أو صورة دون إذن. كما يجب تجنب تقديم رواية واحدة على أنها تمثل جميع المناطق أو المتحدثين بالأمازيغية.
+
+إن حفظ التراث لا يعني الوقوف عند الماضي، بل إعطاء الأجيال الجديدة فرصة لفهم جذورها وتطوير ثقافتها.</p></div>
+
+   <button class="article-title" onclick="openArticle('a5')">5. من منشور على الإنترنت إلى مبادرة في الواقع</button>
+   <div class="article" id="a5"><h3>من منشور على الإنترنت إلى مبادرة في الواقع</h3>
+   <p>يمكن لمنشور أن يلفت الانتباه إلى قضية، لكنه لا يكفي وحده لحلها. فالمبادرة تحتاج إلى هدف محدد، وأشخاص مستعدين للمساهمة، وخطة واقعية، وتقسيم واضح للمهام، ومتابعة لما يتحقق.
+
+يمكن للشباب أن ينظموا لقاءً للاستماع إلى السكان، أو ندوة حول التعليم أو التراث، أو حملة توثيق للمسالك، أو ورشة لتعلم كتابة المطالب والمراسلات.
+
+ليس مطلوبًا أن تبدأ المبادرة كبيرة. قد تبدأ بثلاثة أشخاص، وفكرة واضحة، وموعد متفق عليه، ثم تتطور وفق الإمكانات المتاحة.
+
+المهم أن نحترم اختلاف الآراء، ونتجنب الوعود التي لا نستطيع الوفاء بها، وننشر النتائج بصدق. قيمة العمل لا تقاس بكثرة الصور، بل بما تعلمناه وما أنجزناه وما يمكن مواصلته.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="problems" class="subpage">
+ <div class="container">
+  <button class="back" onclick="showPage('home')">← العودة إلى الأقسام</button>
+  <div class="heading"><small>التشخيص والحلول</small><h2>المشاكل التي نناقشها والحلول المقترحة</h2><p>هذه محاور للنقاش وليست حكمًا بأن جميعها موجودة في كل دوار؛ ينبغي توثيق كل حالة محليًا.</p></div>
+  <div class="cards">
+   <div class="tile"><div class="emoji">🛣️</div><h3>الطرق والمسالك</h3><p>توثيق مواقع الصعوبات وتواريخها، وتحديد الجهة المعنية، ثم متابعة مطالب الصيانة والسلامة.</p></div>
+   <div class="tile"><div class="emoji">🎒</div><h3>التعليم والنقل</h3><p>الاستماع إلى التلاميذ والأسر حول المسافة والنقل وظروف الوصول الآمن إلى المدرسة.</p></div>
+   <div class="tile"><div class="emoji">🏥</div><h3>الصحة والخدمات</h3><p>توثيق المسافات وأوقات الوصول والصعوبات الفعلية مع احترام خصوصية المرضى.</p></div>
+   <div class="tile"><div class="emoji">🌨️</div><h3>الشتاء والثلوج</h3><p>جمع معلومات موثقة حول انقطاع المسالك واحتياجات السكان وطرق الاستعداد للمواسم الباردة.</p></div>
+   <div class="tile"><div class="emoji">🌾</div><h3>الشباب والعمل</h3><p>اقتراح ورشات تكوين وتعاونيات ومشاريع محلية ودراسة احتياجات المنطقة وإمكاناتها.</p></div>
+   <div class="tile"><div class="emoji">🗣️</div><h3>الثقافة والذاكرة</h3><p>توثيق الحكايات والأمثال والأسماء المحلية بموافقة أصحابها وحفظها للأجيال القادمة.</p></div>
+  </div>
+  <div class="form-card" style="margin-top:20px">
+   <h3>ما المشكلة التي ينبغي أن نبدأ بها؟</h3>
+   <label for="problemChoice">اختر الأولوية</label>
+   <select id="problemChoice"><option>الطرق والمسالك</option><option>التعليم والنقل المدرسي</option><option>الصحة والخدمات</option><option>الثلوج والشتاء</option><option>الشباب وفرص العمل</option><option>التراث والثقافة</option><option>قضية أخرى</option></select>
+   <label for="problemDetails">ما الحل الذي تقترحه؟</label>
+   <textarea id="problemDetails" placeholder="اكتب اقتراحك، ومن يمكن أن يشارك في تنفيذه..."></textarea>
+   <button class="btn" onclick="prepareText('problemResult','اقتراح حل','problemChoice','problemDetails')">جهّز الاقتراح</button>
+   <div class="result" id="problemResult"></div>
+  </div>
+ </div>
+</section>
+
+<section id="questions" class="subpage">
+ <div class="container">
+  <button class="back" onclick="showPage('home')">← العودة إلى الأقسام</button>
+  <div class="heading"><small>رأيك مهم</small><h2>أسئلة إلى شباب الجبل</h2><p>لا نريد متفرجين فقط؛ نريد أفكارًا وتجارب ومقترحات عملية.</p></div>
+  <div class="form-card">
+   <h3>استطلاع أولي</h3>
+   <p>ما الموضوع الذي تريد أن يحظى بالأولوية في اللقاءات القادمة؟</p>
+   <div id="pollOptions">
+    <label class="poll-option"><input type="radio" name="poll" value="الطرق والمسالك"> الطرق والمسالك</label>
+    <label class="poll-option"><input type="radio" name="poll" value="التعليم والنقل المدرسي"> التعليم والنقل المدرسي</label>
+    <label class="poll-option"><input type="radio" name="poll" value="الشباب وفرص العمل"> الشباب وفرص العمل</label>
+    <label class="poll-option"><input type="radio" name="poll" value="الصحة والخدمات"> الصحة والخدمات</label>
+    <label class="poll-option"><input type="radio" name="poll" value="اللغة والتراث الأمازيغي"> اللغة والتراث الأمازيغي</label>
+   </div>
+   <label for="pollIdea">ما اقتراحك أو سؤالك؟</label>
+   <textarea id="pollIdea" placeholder="اكتب رأيك بحرية واحترام..."></textarea>
+   <button class="btn" onclick="submitPoll()">جهّز إجابتي</button>
+   <div class="result" id="pollResult"></div>
+   <div class="note">هذا الاستطلاع لا يخزّن الإجابات على الإنترنت. يمكنك نسخ النتيجة وإرسالها يدويًا إلى منظم الموقع.</div>
+  </div>
+  <div class="form-card">
+   <h3>أسئلة للتفكير والنقاش</h3>
+   <p>ما الذي يمكن أن يفعله الشباب محليًا بدل الاكتفاء بالتعليق على المشكلات؟</p>
+   <p>كيف نوثق معاناة الناس من دون المساس بكرامتهم وخصوصيتهم؟</p>
+   <p>ما التراث أو الحكاية التي نخشى أن تضيع إذا لم نسجلها اليوم؟</p>
+   <p>كيف نجعل لقاءاتنا مساحة للاستماع والاقتراح والتعاون؟</p>
+  </div>
+ </div>
+</section>
+
+<section id="activities" class="subpage">
+ <div class="container">
+  <button class="back" onclick="showPage('home')">← العودة إلى الأقسام</button>
+  <div class="heading"><small>من الفكرة إلى اللقاء</small><h2>الندوات واللقاءات التوعوية</h2><p>نطمح إلى تنظيم أنشطة مستقبلية حسب الإمكانات وتوفر المشاركين والمكان. هذا القسم يجمع الاهتمام والاقتراحات، ولا يعني أن هناك موعدًا مؤكدًا الآن.</p></div>
+  <div class="cards">
+   <div class="tile"><div class="emoji">🎤</div><h3>ندوات حوارية</h3><p>لقاءات تناقش قضايا المناطق الجبلية بمشاركة الشباب والمهتمين والفاعلين المحليين.</p></div>
+   <div class="tile"><div class="emoji">🧭</div><h3>لقاءات توعوية</h3><p>ورشات حول التوثيق، وكتابة المطالب، والعمل التطوعي، واحترام الاختلاف.</p></div>
+   <div class="tile"><div class="emoji">🌿</div><h3>مبادرات ميدانية</h3><p>أنشطة ثقافية وتوثيقية ومبادرات محلية تُخطط بالتشاور مع السكان.</p></div>
+  </div>
+  <div class="form-card" style="margin-top:20px">
+   <h3>أخبرنا كيف تريد المشاركة</h3>
+   <label for="activityName">اسمك أو اسم مستعار</label><input id="activityName" placeholder="يمكنك استعمال اسم مستعار">
+   <label for="activityArea">المدينة أو المنطقة</label><input id="activityArea" placeholder="مثال: آيت بلال، أزيلال">
+   <label for="activityKind">نوع المشاركة</label>
+   <select id="activityKind"><option>الحضور في ندوة</option><option>المساعدة في التنظيم</option><option>تقديم مداخلة أو فكرة</option><option>التصوير والتوثيق</option><option>
